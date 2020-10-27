@@ -80,7 +80,17 @@ const _ =
     },
     chunk(arr, size)
     {
-        
+        let rounds = Math.floor(arr.length / size);
+        let final = [];
+        for (let i = 0; i < rounds; i++)
+        {
+            final.push(arr.slice(i * size, i * size + size));
+        }
+        if ((arr.length / size ) % 1 !== 0)
+        {
+            final.push(arr.slice(rounds * size, arr.length));
+        }
+        return final;
     }
 }
 
