@@ -12,8 +12,7 @@ const _ =
             return up;
     },
     inRange(num, start, end) {
-        if (start > end)
-        {
+        if (start > end) {
             let buf = end;
             end = start;
             start = buf;
@@ -26,48 +25,64 @@ const _ =
             return true;
         return false;
     },
-    words(arr){
+    words(arr) {
         return arr.split(" ");
     },
-    pad(str, len)
-    {
+    pad(str, len) {
         let current_len = str.length;
         if (current_len === len)
             return str;
-        while(current_len !== len)
-        {
-            if((len - current_len) % 2 !== 0)
+        while (current_len !== len) {
+            if ((len - current_len) % 2 !== 0)
                 str = " " + str;
-            else    
+            else
                 str += " ";
         }
         return str;
-    }, 
-    has(obj, key)
-    {
+    },
+    has(obj, key) {
         if (obj[key] !== undefined)
             return true;
         return false;
     },
-    invert(obj)
-    {
+    invert(obj) {
         Object.keys(obj).forEach(i => {
-            value= obj[i];
+            value = obj[i];
             key = i;
             obj[value] = key;
             delete obj[i];
         });
         return obj;
     },
-    findKey(obj, func)
-    {
-        Object.keys(obj).forEach(i =>{
-            if (func(obj[i]))
-                return i;
-        });
+    findKey(obj, func) {
+        for (let key in obj) {
+            if (func(obj[key]))
+                return key;
+        }
         return undefined;
+    },
+    drop(arr, num) {
+        if (num !== undefined) {
+            for (let i = 0; i < num; i++)
+                arr.shift();
+        }
+        else
+            arr.shift();
+        return arr;
+    },
+    dropWhile(arr, func) {
+        const cb = (element, index) => {
+            return !func(element, index, arr);
+        };
+        let i = arr.findIndex(cb);
+        let new_arr = this.drop(arr, i);
+        return new_arr;
+    },
+    chunk(arr, size)
+    {
+        
     }
-};
+}
 
 
 
