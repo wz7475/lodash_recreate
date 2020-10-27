@@ -51,12 +51,21 @@ const _ =
     },
     invert(obj)
     {
-        Object.entries(obj).forEach(i => {
-            let buf = i[1];
-            i[1] = i[0];
-            i[0] = buf;
+        Object.keys(obj).forEach(i => {
+            value= obj[i];
+            key = i;
+            obj[value] = key;
+            delete obj[i];
         });
         return obj;
+    },
+    findKey(obj, func)
+    {
+        Object.keys(obj).forEach(i =>{
+            if (func(obj[i]))
+                return i;
+        });
+        return undefined;
     }
 };
 

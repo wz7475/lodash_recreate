@@ -10,10 +10,10 @@ const obj = {
 }); 
  */
 Object.keys(obj).forEach(i => {
-    let value = obj[i];
-    console.log(i);
-    console.log(value);
-    Object.assign(obj, {value : i});
+    value= obj[i];
+    key = i;
+    obj[value] = key;
+    delete obj[i];
 });
 
 console.log(Object.entries(obj));
