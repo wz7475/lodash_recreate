@@ -1,0 +1,1 @@
+This is codecademy free form project, the task is to recreate a part of lodash library. I was told specification of each method, I coded them and ran unit tests, which were already prepared.
