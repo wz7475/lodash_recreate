@@ -25,6 +25,38 @@ const _ =
         if (num >= start && num < end)
             return true;
         return false;
+    },
+    words(arr){
+        return arr.split(" ");
+    },
+    pad(str, len)
+    {
+        let current_len = str.length;
+        if (current_len === len)
+            return str;
+        while(current_len !== len)
+        {
+            if((len - current_len) % 2 !== 0)
+                str = " " + str;
+            else    
+                str += " ";
+        }
+        return str;
+    }, 
+    has(obj, key)
+    {
+        if (obj[key] !== undefined)
+            return true;
+        return false;
+    },
+    invert(obj)
+    {
+        Object.entries(obj).forEach(i => {
+            let buf = i[1];
+            i[1] = i[0];
+            i[0] = buf;
+        });
+        return obj;
     }
 };
 
